@@ -13,10 +13,17 @@ public class 약수의_합 {
         return answer;
     }
 
+    public static int basic2(int n){
+        System.out.println("n = " + n);
+        return n;
+    }
+
     public static void main(String[] args) {
         int n = 12;
         int basic = basic(n);
         System.out.println("basic = " + basic);
+
+        basic2(n);
 
     }
 }
