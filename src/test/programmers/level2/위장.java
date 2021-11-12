@@ -30,6 +30,6 @@ public class 위장 {
     }
 
     public static void main(String[] args) {
-        
+
     }
 }
