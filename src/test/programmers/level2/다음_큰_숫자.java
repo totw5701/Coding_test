@@ -143,7 +143,6 @@ public class 다음_큰_숫자 {
         return 1;
     }
 
-    public static
 
     public static StringBuilder decToBin(int n ){
 //        StringBuilder sb = new StringBuilder();
