@@ -1,17 +1,23 @@
 package test.programmers.note;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 public class 문자열_정렬 {
 
 
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5};
+        String str = "sdEEff";
 
-        Arrays.parallelSort(arr);
+        String s = str.toLowerCase();
+        System.out.println("s = " + s);
 
-        System.out.println("arr = " + Arrays.toString(arr));
+        String kStr = "안녕";
+
+        String s1 = kStr.toLowerCase();
+
+        System.out.println("s1 = " + s1);
 
     }
 }
