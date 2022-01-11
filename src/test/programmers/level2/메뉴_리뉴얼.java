@@ -6,15 +6,66 @@ public class 메뉴_리뉴얼 {
 
     public static String[] solution(String[] orders, int[] course) {
 
-        for (String order : orders) {
-            Set<String> combination = combination(order, 2);
-            for (String s : combination) {
-                System.out.println("s = " + s);
-            }
-            System.out.println();
+
+        List<String> answer = new ArrayList<>();
+
+        int longest = 0;
+        for (int i : course) {
+            longest = Math.max(longest, i);
         }
 
-        return null;
+        for (int pickNum : course) {
+
+            Map<String, Integer> menus = new HashMap<>();
+
+            // 조합 뽑기.
+            for (String order : orders) {
+                Set<String> comb = combination(order, pickNum);
+
+
+                // menu Map에 넣기
+                for (String s : comb) {
+                    if (menus.containsKey(s)) {
+                        menus.put(s, menus.get(s) + 1);
+                    } else {
+                        menus.put(s, 1);
+                    }
+                }
+
+            }
+
+            List<String> topMenus = topChoice(menus);
+            for (String topMenu : topMenus) answer.add(topMenu);
+
+
+            System.out.println("menus = " + menus);
+            System.out.println("answer = " + answer);
+        }
+
+        answer.sort(Comparator.naturalOrder());
+        return answer.toArray(new String[0]);
+    }
+
+    public static List<String> topChoice(Map<String, Integer> menus) {
+        List<String> topMenus = new ArrayList<>();
+
+        int topNum = 0;
+        for (String key : menus.keySet()) {
+            if (menus.get(key) > topNum) {
+                topNum = menus.get(key);
+            }
+        }
+
+        if(topNum <= 1) return topMenus;
+
+        for (String key : menus.keySet()) {
+            if (menus.get(key) == topNum) {
+                topMenus.add(key);
+            }
+        }
+
+
+        return topMenus;
     }
 
     public static Set<String> combination(String order, int pickNum) {
@@ -59,6 +110,8 @@ public class 메뉴_리뉴얼 {
         String[] orders = {"ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"};
         int[] course = {2, 3, 4};
         String[] solution = solution(orders, course);
+
+        System.out.println(Arrays.toString(solution));
 
 
     }
